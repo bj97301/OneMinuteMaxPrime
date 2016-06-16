@@ -58,6 +58,12 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\OneMinuteMaxPrime\OneMinuteMaxPrime.csproj">
+      <Project>{2D77EE1C-D213-4412-8C5A-0A44EE65DC1E}</Project>
+      <Name>OneMinuteMaxPrime</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

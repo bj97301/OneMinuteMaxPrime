@@ -1,13 +1,17 @@
-﻿using NUnit.Framework;
+﻿using FluentAssertions;
+using NUnit.Framework;
+using OneMinuteMaxPrime;
 
 namespace OneMinuteMaxPrimeTests
 {
     [TestFixture]
     internal class IsPrimeNumberTests
     {
-        [Test]
-        public void CanRecognizeKnownPrimeNumbers()
+        [TestCase(5)]
+        [TestCase(3)]
+        public void CanRecognizeKnownPrimeNumbers(int number)
         {
+            IsPrimeNumberAction.Execute(number).Should().BeTrue();
         }
     }
 }
