@@ -53,6 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IsPrimeNumberTests.cs" />
+    <Compile Include="LargestPrimeNumberCalculatorAction.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
