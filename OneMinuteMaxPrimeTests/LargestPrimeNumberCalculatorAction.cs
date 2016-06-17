@@ -21,5 +21,14 @@ namespace OneMinuteMaxPrimeTests
 
             timer.Elapsed.Milliseconds.ShouldBeEquivalentTo(expectedExecuteionTime);
         }
+
+        [Test]
+        public void CalculatesALargerPrimeNumberForAGivenPeriodOfTime()
+        {
+            var result = LargestPrimeNumberCalculatorAction.Execute(10);
+
+            result.Should().BeGreaterThan(3);
+            IsPrimeNumberAction.Execute(result).Should().BeTrue();
+        }
     }
 }
