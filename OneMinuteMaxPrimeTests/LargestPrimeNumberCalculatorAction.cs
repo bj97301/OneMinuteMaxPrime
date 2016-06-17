@@ -8,11 +8,12 @@ namespace OneMinuteMaxPrimeTests
     [TestFixture]
     public class LargestPrimeNumberCalculatorActionTests
     {
-        [Test]
-        public void CanRunForGivenAmountOfTime()
+        [TestCase(1)]
+        [TestCase(5)]
+        [TestCase(90)]
+        public void CanRunForGivenAmountOfTime(int expectedExecuteionTime)
         {
             var timer = new Stopwatch();
-            const int expectedExecuteionTime = 1;
             timer.Start();
 
             LargestPrimeNumberCalculatorAction.Execute(expectedExecuteionTime);
