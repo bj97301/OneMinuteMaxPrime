@@ -7,7 +7,7 @@ namespace OneMinuteMaxPrime
     {
         public static int Execute(int milliseconds, Action<string> displayLogger = null)
         {
-            var currentLargestPrimeNumber = 3;
+            var currentLargestPrimeNumber = 2;
             var count = currentLargestPrimeNumber;
             var stopwatch = new Stopwatch();
             stopwatch.Start();
