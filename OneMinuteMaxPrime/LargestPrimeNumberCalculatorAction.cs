@@ -30,7 +30,7 @@ namespace OneMinuteMaxPrime
 
             UpdateDisplay(displayLogger,
                 currentLargestPrimeNumber,
-                stopwatch.Elapsed.Seconds);
+                TimeSpan.FromMilliseconds( milliseconds).TotalSeconds);
 
             stopwatch.Stop();
             return currentLargestPrimeNumber;
