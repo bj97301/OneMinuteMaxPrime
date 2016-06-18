@@ -5,11 +5,11 @@ namespace OneMinuteMaxPrime
 {
     public class LargestPrimeNumberCalculatorAction
     {
-        public static int Execute(int milliseconds, Action<string> write = null)
+        public static int Execute(int milliseconds, Action<string> displayLogger = null)
         {
-            if (write == null)
+            if (displayLogger == null)
             {
-                write = Console.Write;
+                displayLogger = Console.Write;
             }
 
             var currentLargestPrimeNumber = 3;
@@ -20,7 +20,7 @@ namespace OneMinuteMaxPrime
             {
                 if (stopwatch.Elapsed.Milliseconds%100 == 0)
                 {
-                    WriteToConsole(write, stopwatch, currentLargestPrimeNumber);
+                    WriteToConsole(displayLogger, stopwatch, currentLargestPrimeNumber);
                 }
                 count++;
                 if (IsPrimeNumberAction.Execute(count))
@@ -28,16 +28,16 @@ namespace OneMinuteMaxPrime
                     currentLargestPrimeNumber = count;
                 }
             }
-            WriteToConsole(write, stopwatch, currentLargestPrimeNumber);
+            WriteToConsole(displayLogger, stopwatch, currentLargestPrimeNumber);
             stopwatch.Stop();
             return currentLargestPrimeNumber;
         }
 
-        private static void WriteToConsole(Action<string> write, Stopwatch stopwatch, int currentLargestPrimeNumber)
+        private static void WriteToConsole(Action<string> displayLogger, Stopwatch stopwatch, int currentLargestPrimeNumber)
         {
             var logMessage =
                 $"\r{stopwatch.Elapsed.Seconds} seconds, current max prime number: {currentLargestPrimeNumber}";
-            write(logMessage);
+            displayLogger(logMessage);
         }
     }
 }

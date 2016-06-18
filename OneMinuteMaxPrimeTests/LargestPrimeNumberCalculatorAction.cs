@@ -36,8 +36,8 @@ namespace OneMinuteMaxPrimeTests
         public void ShouldIndicateElapseTimeAndCurrentMaxPrimeNumber()
         {
             string message = null;
-            Action<string> write = x => { message = x; };
-            LargestPrimeNumberCalculatorAction.Execute(0, write);
+            Action<string> displayLogger = x => { message = x; };
+            LargestPrimeNumberCalculatorAction.Execute(0, displayLogger);
 
             message.Should().Contain("second", "should display the timer progress");
             message.Should().Contain("prime", "should display the highest numbers calculated along the way");
