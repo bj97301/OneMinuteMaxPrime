@@ -1,5 +1,5 @@
-using FluentAssertions;
 ﻿using System;
+using FluentAssertions;
 using NUnit.Framework;
 using NUnit.Framework.Compatibility;
 using OneMinuteMaxPrime;
@@ -20,7 +20,7 @@ namespace OneMinuteMaxPrimeTests
             LargestPrimeNumberCalculatorAction.Execute(expectedExecuteionTime);
             timer.Stop();
 
-            timer.Elapsed.Milliseconds.ShouldBeEquivalentTo(expectedExecuteionTime);
+            timer.Elapsed.Milliseconds.Should().BeInRange(expectedExecuteionTime - 10, expectedExecuteionTime + 10);
         }
 
         [Test]
