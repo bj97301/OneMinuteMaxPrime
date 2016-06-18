@@ -11,23 +11,36 @@ namespace OneMinuteMaxPrime
             var count = currentLargestPrimeNumber;
             var stopwatch = new Stopwatch();
             stopwatch.Start();
+
             while (stopwatch.Elapsed < TimeSpan.FromMilliseconds(milliseconds))
             {
-                if (stopwatch.Elapsed.Milliseconds%100 == 0)
-                {
-                    displayLogger?.Invoke(
-                        $"\r{stopwatch.Elapsed.Seconds} seconds, current max prime number: {currentLargestPrimeNumber}");
-                }
                 count++;
+                var shouldLog = stopwatch.Elapsed.Milliseconds%100 == 0;
+                if (shouldLog)
+                {
+                    UpdateDisplay(displayLogger,
+                        currentLargestPrimeNumber,
+                        stopwatch.Elapsed.Seconds);
+                }
                 if (IsPrimeNumberAction.Execute(count))
                 {
                     currentLargestPrimeNumber = count;
                 }
             }
-            displayLogger?.Invoke(
-                $"\r{stopwatch.Elapsed.Seconds} seconds, current max prime number: {currentLargestPrimeNumber}");
+
+            UpdateDisplay(displayLogger,
+                currentLargestPrimeNumber,
+                stopwatch.Elapsed.Seconds);
+
             stopwatch.Stop();
             return currentLargestPrimeNumber;
+        }
+
+        private static void UpdateDisplay(Action<string> displayLogger, int currentLargestPrimeNumber,
+            double totalSeconds)
+        {
+            displayLogger?.Invoke(
+                $"\r{totalSeconds} seconds, current max prime number: {currentLargestPrimeNumber}");
         }
     }
 }
